@@ -1,11 +1,24 @@
-const router = require('express').Router();
-const { Tag, Product, ProductTag } = require('../../models');
+// -----------------------------------------------------------------------------
+// Program:  tag-routes.js
+// Purpose:  Routing for Tag Table.
+// Input:    <none>   
+// -----------------------------------------------------------------------------
+// Author:   Mark Harrison
+// Date:     May 15, 2021
+// -----------------------------------------------------------------------------
 
-// The `/api/tags` endpoint
 
-router.get('/', (req, res) => {
-  // find all tags
-  // be sure to include its associated Product data
+// -----------------------------------------------------------------------------
+// Dependencies
+// -----------------------------------------------------------------------------
+const router = require('express').Router();  // Routing & middleware framework
+const { Tag, Product, ProductTag } = require('../../models');  // Models
+
+
+// -----------------------------------------------------------------------------
+// Routing: Get /api/tags - return all Tag records and linked Product records
+// -----------------------------------------------------------------------------
+router.get('/', async (req, res) => {
   try {
     const tagData = await Tag.findAll({
       include: [{ model: Product }],
@@ -17,9 +30,11 @@ router.get('/', (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {
-  // find a single tag by its `id`
-  // be sure to include its associated Product data
+
+// -----------------------------------------------------------------------------
+// Routing: Get /api/tag/:id - return requested Tag record and linked Product records
+// -----------------------------------------------------------------------------
+router.get('/:id', async (req, res) => {
   try {
     const tagData = await Tag.findByPk(req.params.id, {
       include: [{ model: Product }],
@@ -31,8 +46,11 @@ router.get('/:id', (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {
-  // create a new tag
+
+// -----------------------------------------------------------------------------
+// Routing: Post /api/tag - add Tag record
+// -----------------------------------------------------------------------------
+router.post('/', async (req, res) => {
   try {
     const tagData = await Tag.create({
       tag_name: req.body.tag_name,
@@ -43,10 +61,14 @@ router.post('/', (req, res) => {
   }  
 });
 
-router.put('/:id', (req, res) => {
+
+// -----------------------------------------------------------------------------
+// Routing: Put /api/tag/:id - update requested Tag record
+// -----------------------------------------------------------------------------
+router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
   try {
-    const tagData = await Tag.update({
+    const tagData = await Tag.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -63,7 +85,11 @@ router.put('/:id', (req, res) => {
   }
 });
 
-router.delete('/:id', (req, res) => {
+
+// -----------------------------------------------------------------------------
+// Routing: Delete /api/tag/:id - delete requested Tag record
+// -----------------------------------------------------------------------------
+router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
   try {
     const tagData = await Tag.destroy({
@@ -82,6 +108,9 @@ router.delete('/:id', (req, res) => {
     res.status(500).json(err);
   }
 });
-});
 
+
+// -----------------------------------------------------------------------------
+// Module Exports
+// -----------------------------------------------------------------------------
 module.exports = router;

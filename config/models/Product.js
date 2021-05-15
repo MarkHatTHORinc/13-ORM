@@ -1,12 +1,26 @@
-// import important parts of sequelize library
-const { Model, DataTypes } = require('sequelize');
-// import our database connection from config.js
-const sequelize = require('../config/connection');
+// -----------------------------------------------------------------------------
+// Class:    Product.js
+// Purpose:  Model for Product Table.
+// Input:    <none>   
+// -----------------------------------------------------------------------------
+// Author:   Mark Harrison
+// Date:     May 15, 2021
+// -----------------------------------------------------------------------------
 
-// Initialize Product model (table) by extending off Sequelize's Model class
+
+// -----------------------------------------------------------------------------
+// Dependencies
+// -----------------------------------------------------------------------------
+const { Model, DataTypes } = require('sequelize');  // Sequelize ORM
+const sequelize = require('../connection');       // Database connection
+
+
+// -----------------------------------------------------------------------------
+// Class: Product - Initialize table by extending Sequelize's Model Class
+// -----------------------------------------------------------------------------
 class Product extends Model { }
 
-// set up fields and rules for Product model
+// Set up fields and rules for Product model
 Product.init(
   {
     id: {
@@ -20,7 +34,7 @@ Product.init(
       allowNull: false,
     },
     price: {
-      type: DataTypes.DECIMAL.UNSIGNED(9, 2),
+      type: DataTypes.DECIMAL(9, 2).UNSIGNED,
       allowNull: false,
     },
     stock: {
@@ -45,4 +59,8 @@ Product.init(
   }
 );
 
+
+// -----------------------------------------------------------------------------
+// Module Exports
+// -----------------------------------------------------------------------------
 module.exports = Product;

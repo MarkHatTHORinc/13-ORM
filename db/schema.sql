@@ -1,9 +1,22 @@
+-- -----------------------------------------------------------------------------
+-- Script:   schema.sql
+-- Purpose:  Drop and Create ecomerce_db.
+-- Input:    <none>   
+-- -----------------------------------------------------------------------------
+-- Author:   Mark Harrison
+-- Date:     May 15, 2021
+-- -----------------------------------------------------------------------------
+
 -- DROP DATABASE
 DROP DATABASE IF EXISTS ecommerce_db;
 
 -- CREATE DATABASE
 CREATE DATABASE ecommerce_db;
 
+
+-- -----------------------------------------------------------------------------
+-- The following code is commented out, but could also be used to build tables.
+-- -----------------------------------------------------------------------------
 -- USE eCOMMERCE_DB;
 
 -- CREATE TABLE Category (

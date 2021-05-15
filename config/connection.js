@@ -1,17 +1,23 @@
-require('dotenv').config();
+// -----------------------------------------------------------------------------
+// Program:  connection.js
+// Purpose:  Use the sequelize ORM to create a connection to the database.
+// Input:    <none>   
+// -----------------------------------------------------------------------------
+// Author:   Mark Harrison
+// Date:     May 15, 2021
+// -----------------------------------------------------------------------------
 
-const Sequelize = require('sequelize');
 
-const sequelize = process.env.JAWSDB_URL
-  ? new Sequelize(process.env.JAWSDB_URL)
-  : new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {
-      host: 'localhost',
-      dialect: 'mysql',
-      dialectOptions: {
-        decimalNumbers: true,
-      },
-    });
+// -----------------------------------------------------------------------------
+// Dependencies
+// -----------------------------------------------------------------------------
+const Sequelize = require('sequelize');     // ORM package
+require('dotenv').config();                 // Keep connection properties hidden
 
-// const sequelize = new Sequelize(process.env.MYSQL_URL);
+const sequelize = new Sequelize(process.env.MYSQL_URI);  // Create DB Connection
 
+
+// -----------------------------------------------------------------------------
+// Module Exports
+// -----------------------------------------------------------------------------
 module.exports = sequelize;

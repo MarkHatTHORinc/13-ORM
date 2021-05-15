@@ -1,9 +1,26 @@
-const { Model, DataTypes } = require('sequelize');
+// -----------------------------------------------------------------------------
+// Class:    ProductTag.js
+// Purpose:  Model for Product_Tag Table.
+// Input:    <none>   
+// -----------------------------------------------------------------------------
+// Author:   Mark Harrison
+// Date:     May 15, 2021
+// -----------------------------------------------------------------------------
 
-const sequelize = require('../config/connection');
 
+// -----------------------------------------------------------------------------
+// Dependencies
+// -----------------------------------------------------------------------------
+const { Model, DataTypes } = require('sequelize');  // Sequelize ORM
+const sequelize = require('../connection');         // Database connection
+
+
+// -----------------------------------------------------------------------------
+// Class: ProductTag - Initialize table by extending Sequelize's Model Class
+// -----------------------------------------------------------------------------
 class ProductTag extends Model { }
 
+// Set up fields and rules for ProductTag model
 ProductTag.init(
   {
     id: {
@@ -36,4 +53,8 @@ ProductTag.init(
   }
 );
 
+
+// -----------------------------------------------------------------------------
+// Module Exports
+// -----------------------------------------------------------------------------
 module.exports = ProductTag;

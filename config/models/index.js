@@ -1,4 +1,15 @@
-// import models
+// -----------------------------------------------------------------------------
+// Program:  Index.js
+// Purpose:  Establish Relationships between Tables.
+// Input:    <none>   
+// -----------------------------------------------------------------------------
+// Author:   Mark Harrison
+// Date:     May 15, 2021
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Dependencies
+// -----------------------------------------------------------------------------
 const Product = require('./Product');
 const Category = require('./Category');
 const Tag = require('./Tag');
@@ -23,10 +34,14 @@ Product.belongsToMany(Tag, {
 
 // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product, {
-  throug: ProductTag,
+  through: ProductTag,
   foreignKey: 'tag_id',
 });
 
+
+// -----------------------------------------------------------------------------
+// Module Exports
+// -----------------------------------------------------------------------------
 module.exports = {
   Product,
   Category,

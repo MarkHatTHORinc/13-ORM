@@ -1,11 +1,24 @@
-const router = require('express').Router();
-const { Category, Product } = require('../../models');
+// -----------------------------------------------------------------------------
+// Program:  tag-routes.js
+// Purpose:  Routing for Tag Table.
+// Input:    <none>   
+// -----------------------------------------------------------------------------
+// Author:   Mark Harrison
+// Date:     May 15, 2021
+// -----------------------------------------------------------------------------
 
-// The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
+// -----------------------------------------------------------------------------
+// Dependencies
+// -----------------------------------------------------------------------------
+const router = require('express').Router();  // Routing & middleware framework
+const { Category, Product } = require('../../models');  // Models
+
+
+// -----------------------------------------------------------------------------
+// Routing: Get /api/categories - return all Category records and linked Product records
+// -----------------------------------------------------------------------------
+router.get('/', async (req, res) => {
   try {
     const categoryData = await Category.findAll({
       include: [{ model: Product }],
@@ -17,9 +30,11 @@ router.get('/', (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {
-  // find one category by its `id` value
-  // be sure to include its associated Products
+
+// -----------------------------------------------------------------------------
+// Routing: Get /api/categories/:id - return requested Category record and linked Product records
+// -----------------------------------------------------------------------------
+router.get('/:id', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id, {
       include: [{ model: Product }],
@@ -32,7 +47,10 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.post('/', (req, res) => {
+// -----------------------------------------------------------------------------
+// Routing: Post /api/tag/ - add requested Category record
+// -----------------------------------------------------------------------------
+router.post('/', async (req, res) => {
   // create a new category. Id is generated, so only need to pick up name
   try {
     const categoryData = await Category.create({
@@ -44,16 +62,19 @@ router.post('/', (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+
+// -----------------------------------------------------------------------------
+// Routing: Put /api/categories/:id - update requested Category record
+// -----------------------------------------------------------------------------
+router.put('/:id', async (req, res) => {
   try {
-    const categoryData = await Category.update({
+    const categoryData = await Category.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
 
-    if (!catalogData) {
+    if (!categoryData) {
       res.status(404).json({ message: `Category: ${req.params.id} not found.` });
       return;
     }
@@ -64,7 +85,11 @@ router.put('/:id', (req, res) => {
   }
 });
 
-router.delete('/:id', (req, res) => {
+
+// -----------------------------------------------------------------------------
+// Routing: Delete /api/tag/:id - delete requested Category record
+// -----------------------------------------------------------------------------
+router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
     const categoryData = await Category.destroy({
@@ -84,4 +109,8 @@ router.delete('/:id', (req, res) => {
   }
 });
 
+
+// -----------------------------------------------------------------------------
+// Module Exports
+// -----------------------------------------------------------------------------
 module.exports = router;

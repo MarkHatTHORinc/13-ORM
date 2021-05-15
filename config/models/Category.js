@@ -1,9 +1,26 @@
+// -----------------------------------------------------------------------------
+// Class:    Category.js
+// Purpose:  Model for Category Table.
+// Input:    <none>   
+// -----------------------------------------------------------------------------
+// Author:   Mark Harrison
+// Date:     May 15, 2021
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+// Dependencies
+// -----------------------------------------------------------------------------
 const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../connection.js');
 
-const sequelize = require('../config/connection.js');
 
+// -----------------------------------------------------------------------------
+// Class: Category - Initialize table by extending Sequelize's Model Class
+// -----------------------------------------------------------------------------
 class Category extends Model {}
 
+// Set up fields and rules for Category model
 Category.init(
   {
     id: {
@@ -26,4 +43,8 @@ Category.init(
   }
 );
 
+
+// -----------------------------------------------------------------------------
+// Module Exports
+// -----------------------------------------------------------------------------
 module.exports = Category;
