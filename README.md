@@ -37,18 +37,26 @@ The following steps should be used to install:
 ## Usage 🧮
 This is a backend application and can be utilized by calling its web services using a tool like Insomnia or Postman.
 
-![Demo Video 1](./Assets/video/EmployeeMangerPart1.mp4)
-![Demo Video 2](./Assets/video/EmployeeMangerPart2.mp4)
+![Demo Video 1](./Assets/video/Homework13_ORM_Demo.mp4)
 
-![Initial Application Screen](./Assets/images/WelcomePage.png)
-![Maintenance Menu](./Assets/images/MaintenanceMenu.png)
-![Reports Menu](./Assets/images/ReportsMenu.png)
-![Employee Maintenance Selection](./Assets/images/EmployeeMaintenanceSelection.png)
-![Employee Maintenance Update](./Assets/images/EmployeeMaintenanceUpdate.png)
-![Employee Maintenance Update Completed](./Assets/images/EmployeeMaintenanceUpdateCompleted.png)
-![Employee Maintenance Update Completed](./Assets/images/EmployeeListManagerSelection.png)
-![Employee Maintenance Update Completed](./Assets/images/EmployeeListAllManagers.png)
 
+![Get All Categories](./Assets/images/GetAllCategories.png)
+![Get One Category](./Assets/images/GetOneCategory.png)
+![Add A Category](./Assets/images/AddACategory.png)
+![Update A Category](./Assets/images/UpdateACategory.png)
+![Delete A Category](./Assets/images/DeleteACategory.png)
+
+![Get All Products](./Assets/images/GetAllProducts.png)
+![Get One Product](./Assets/images/GetOneProduct.png)
+![Add A Product](./Assets/images/AddAProduct.png)
+![Update A Product](./Assets/images/UpdateAProduct.png)
+![Delete A Product](./Assets/images/DeleteAProduct.png)
+
+![Get All Tags](./Assets/images/GetAllTags.png)
+![Get One Tag](./Assets/images/GetOneTag.png)
+![Add A Tag](./Assets/images/AddATag.png)
+![Update A Tag](./Assets/images/UpdateATag.png)
+![Delete A Tag](./Assets/images/DeleteATag.png)
 
 ## Credits 👷
 ```md
